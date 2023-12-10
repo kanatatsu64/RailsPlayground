@@ -1,5 +1,8 @@
 #!/bin/bash -e
 
+# Remove a potentially pre-existing server.pid for Rails.
+rm -f /opt/project/tmp/pids/server.pid
+
 # If running the rails server then create or migrate existing database
 if [ "${1}" == "rails" ] && [ "${2}" == "server" ]; then
   rails db:prepare

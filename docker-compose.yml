@@ -1,0 +1,20 @@
+# docker-compose
+#
+# Development environment: How to create a network.
+# ```
+#    docker network create shared-network
+# ```
+#
+version: "3.9"
+services:
+  rails-playground:
+    build: .
+    command: tail -f /dev/null
+    volumes:
+      - .:/rails-playground
+    environment:
+      BUNDLE_APP_CONFIG: /usr/local/bundle
+      TZ: "Asia/Tokyo"
+    hostname: rails-playground
+    ports:
+      - "3000:3000"
